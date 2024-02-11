@@ -1,11 +1,14 @@
 // * IMPORTS
 const router = require('express').Router();
 
-// * ROUTES
-// TODO: REGISTER
-router.post('/');
+const { registerUser, loginUser } = require('../controllers/auth.controllers');
 
-// TODO: LOGIN
+// * ROUTES
+// REGISTER
+router.post('/register', registerUser);
+
+// LOGIN
+router.post('/login', loginUser);
 
 // * EXPORTS
 module.exports = router;
