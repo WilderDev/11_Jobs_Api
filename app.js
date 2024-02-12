@@ -9,8 +9,6 @@ const app = express();
 const connectToMongo = require('./lib/mongoose');
 const { PORT, SERVER_URL } = require('./lib/constants');
 
-const authMW = require('./middleware/auth.middleware');
-
 // * MIDDLEWAREs
 app.use(cors()); // CORS
 app.use(express.json()); // Body Parser
