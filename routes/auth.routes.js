@@ -5,10 +5,10 @@ const { registerUser, loginUser } = require('../controllers/auth.controllers');
 
 // * ROUTES
 // REGISTER
-// TODO
+router.post('/register', registerUser);
 
 // LOGIN
-// TODO
+router.post('/login', loginUser);
 
 // * EXPORTS
 module.exports = router;

@@ -9,12 +9,15 @@ const app = express();
 const connectToMongo = require('./lib/mongoose');
 const { PORT, SERVER_URL } = require('./lib/constants');
 
+const authMiddleware = require('./middleware/auth.middleware');
+
 // * MIDDLEWAREs
 app.use(cors()); // CORS
 app.use(express.json()); // Body Parser
 
 // * ROUTES
 app.use('/api/v1/auth', require('./routes/auth.routes'));
+app.use('/api/v1/jobs', authMiddleware, require('./routes/job.routes'));
 
 // * START SERVER & DB
 (async () => {
