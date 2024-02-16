@@ -17,16 +17,17 @@ const xss = require('xss-clean');
 const rateLimiter = require('express-rate-limit');
 
 // * MIDDLEWAREs
-app.use(xss()); // XSS
-app.use(cors()); // CORS
-app.use(helment()); // Header Security
-app.use(express.json()); // Body Parser
+app.set('trust proxy', 1);
 app.use(
   rateLimiter({
     windowMs: 15 * 60 * 1000, // 15 Minutes
     max: 100, // limit each IP to 100 requests per window (15 mins)
   }),
 ); // Rate Limited (Prevents Brute Force Attacks)
+app.use(express.json()); // Body Parser
+app.use(helment()); // Header Security
+app.use(cors()); // CORS
+app.use(xss()); // XSS
 
 // * ROUTES
 app.use('/api/v1/auth', require('./routes/auth.routes'));

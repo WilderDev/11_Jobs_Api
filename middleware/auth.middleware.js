@@ -21,7 +21,11 @@ async function authMiddleware(req, res, next) {
     const verifiedJWT = jwt.verify(bearerToken, process.env.JWT_SECRET);
 
     // Attach the username to the request
-    req.user = { name: verifiedJWT.name };
+    req.user = {
+      id: verifiedJWT.id,
+      name: verifiedJWT.name,
+      role: 'subscribed',
+    };
 
     // Next Middleware
     next();

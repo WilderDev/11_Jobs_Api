@@ -41,6 +41,7 @@ UserSchema.methods.genJWT = function () {
   // Sign a JWT with our info
   const jwtToken = jwt.sign(
     {
+      id: this._id,
       name: this.name,
     },
     process.env.JWT_SECRET,
